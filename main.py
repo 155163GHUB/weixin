@@ -55,8 +55,8 @@ def get_weather(region):
     # 天气
     weather = response["now"]["text"]
     # 当前温度
-    temp = response["max"]["temp"] + u"\N{DEGREE SIGN}" + "C"
-    temp1 = response["min"]["temp"] + u"\N{DEGREE SIGN}" + "C"
+    temp = response["tempMax"] + u"\N{DEGREE SIGN}" + "C"
+    temp1 = response["tempMin"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
