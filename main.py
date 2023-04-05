@@ -50,19 +50,18 @@ def get_weather(region):
     else:
         # 获取地区的location--id
         location_id = response["location"][0]["id"]
-     #weather_url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format(location_id, key)
-    weather_url = "https://devapi.qweather.com/v7/weather/3d?location={}&key={}".format(location_id, key)
+    weather_url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format(location_id, key)
+    #weather_url = "https://devapi.qweather.com/v7/weather/3d?location={}&key={}".format(location_id, key)
     response = get(weather_url, headers=headers).json()
     # 天气
-    weather = response["now"++]["textDay"]
+    weather = response["now"]["text"]
     # 当前温度
     #temp = response["daily"]["tempMax"] + u"\N{DEGREE SIGN}" + "C"
     #temp1 = response["daily"]["tempMin"] + u"\N{DEGREE SIGN}" + "C"
-    #temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
+    temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
-    #wind_dir = response["daily"]["windDirDay"]
-    return weather
-   #, temp, wind_dir
+    wind_dir = response["now"]["windDir"]
+    return weather, temp, wind_dir
  
  
 def get_birthday(birthday, year, today):
